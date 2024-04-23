@@ -27,6 +27,8 @@ public class MainWindow {
 	private JTextField TxtF_Subnet;
 	private JTextField textField_2;
 	private JTextField TxtF_Net_Prefix;
+	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -102,13 +104,8 @@ public class MainWindow {
 		JPanel PhonePanel = new JPanel();
 		PhonePanel.setBackground(new Color(240, 255, 255));
 		PhonePanel.setBounds(10, 76, 250, 474);
-		WholePanel.add(PhonePanel);
 		PhonePanel.setLayout(null);
-		
-		JLabel Lbl_Phone_Img = new JLabel("");
-		Lbl_Phone_Img.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/Phone Frame.png")));
-		Lbl_Phone_Img.setBounds(0, 0, 250, 474);
-		PhonePanel.add(Lbl_Phone_Img);
+		WholePanel.add(PhonePanel);
 		
 		JPanel PhMenuPanel = new JPanel();
 		PhMenuPanel.setBackground(Color.WHITE);
@@ -155,10 +152,165 @@ public class MainWindow {
 		BtnPhHome.setBounds(0, 0, 36, 36);
 		PhHomePanel.add(BtnPhHome);
 		
-		JPanel PhScreenPanel = new JPanel();
-		PhScreenPanel.setBackground(Color.WHITE);
-		PhScreenPanel.setBounds(30, 39, 190, 350);
-		PhonePanel.add(PhScreenPanel);
+		JPanel ScreenSettingPanel = new JPanel();
+		ScreenSettingPanel.setBackground(Color.WHITE);
+		ScreenSettingPanel.setBounds(300, 39, 190, 350);
+		ScreenSettingPanel.setVisible(false);
+		PhonePanel.add(ScreenSettingPanel);
+		ScreenSettingPanel.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 190, 30);
+		ScreenSettingPanel.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Settings");
+		lblNewLabel.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 14));
+		lblNewLabel.setBounds(0, 0, 77, 30);
+		panel.add(lblNewLabel);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setLayout(null);
+		panel_1.setBounds(0, 41, 190, 30);
+		ScreenSettingPanel.add(panel_1);
+		
+		JLabel lblWifiName = new JLabel("Wifi Name:");
+		lblWifiName.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 12));
+		lblWifiName.setBounds(0, 0, 65, 30);
+		panel_1.add(lblWifiName);
+		
+		textField = new JTextField();
+		textField.setBounds(64, 0, 125, 30);
+		panel_1.add(textField);
+		textField.setColumns(10);
+		
+		JPanel panel_1_1 = new JPanel();
+		panel_1_1.setLayout(null);
+		panel_1_1.setBounds(0, 82, 190, 30);
+		ScreenSettingPanel.add(panel_1_1);
+		
+		JButton btnNewButton = new JButton("Connect");
+		btnNewButton.setBackground(new Color(127, 255, 0));
+		btnNewButton.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 14));
+		btnNewButton.setBounds(0, 0, 190, 30);
+		panel_1_1.add(btnNewButton);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setLayout(null);
+		panel_2.setBounds(0, 123, 190, 30);
+		ScreenSettingPanel.add(panel_2);
+		
+		JLabel lblStatus = new JLabel("Status:");
+		lblStatus.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 12));
+		lblStatus.setBounds(0, 0, 77, 30);
+		panel_2.add(lblStatus);
+		
+		JPanel panel_2_1 = new JPanel();
+		panel_2_1.setLayout(null);
+		panel_2_1.setBounds(0, 164, 190, 30);
+		ScreenSettingPanel.add(panel_2_1);
+		
+		JLabel lblWifiName_1 = new JLabel("Wifi Name:");
+		lblWifiName_1.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 12));
+		lblWifiName_1.setBounds(0, 0, 77, 30);
+		panel_2_1.add(lblWifiName_1);
+		
+		JPanel panel_2_1_1 = new JPanel();
+		panel_2_1_1.setLayout(null);
+		panel_2_1_1.setBounds(0, 205, 190, 30);
+		ScreenSettingPanel.add(panel_2_1_1);
+		
+		JLabel lblWifiName_1_1 = new JLabel("Mac Address:");
+		lblWifiName_1_1.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 12));
+		lblWifiName_1_1.setBounds(0, 0, 77, 30);
+		panel_2_1_1.add(lblWifiName_1_1);
+		
+		JPanel panel_2_1_1_1 = new JPanel();
+		panel_2_1_1_1.setLayout(null);
+		panel_2_1_1_1.setBounds(0, 246, 190, 30);
+		ScreenSettingPanel.add(panel_2_1_1_1);
+		
+		JLabel lblWifiName_1_1_1 = new JLabel("Ipv6 Address:");
+		lblWifiName_1_1_1.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 12));
+		lblWifiName_1_1_1.setBounds(0, 0, 77, 30);
+		panel_2_1_1_1.add(lblWifiName_1_1_1);
+		
+		JPanel panel_2_1_1_1_1 = new JPanel();
+		panel_2_1_1_1_1.setLayout(null);
+		panel_2_1_1_1_1.setBounds(0, 287, 190, 30);
+		ScreenSettingPanel.add(panel_2_1_1_1_1);
+		
+		JLabel lblWifiName_1_1_1_1 = new JLabel("Ipv4 Address:");
+		lblWifiName_1_1_1_1.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 12));
+		lblWifiName_1_1_1_1.setBounds(0, 0, 77, 30);
+		panel_2_1_1_1_1.add(lblWifiName_1_1_1_1);
+		
+		JPanel panel_2_1_1_1_2 = new JPanel();
+		panel_2_1_1_1_2.setLayout(null);
+		panel_2_1_1_1_2.setBounds(0, 320, 190, 30);
+		ScreenSettingPanel.add(panel_2_1_1_1_2);
+		
+		JLabel lblWifiName_1_1_1_2 = new JLabel("0000:0000:0000:0000");
+		lblWifiName_1_1_1_2.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 12));
+		lblWifiName_1_1_1_2.setBounds(0, 0, 190, 30);
+		panel_2_1_1_1_2.add(lblWifiName_1_1_1_2);
+		
+		JPanel ScreenHomePanel = new JPanel();
+		ScreenHomePanel.setLayout(null);
+		ScreenHomePanel.setBackground(Color.WHITE);
+		ScreenHomePanel.setVisible(false);
+		ScreenHomePanel.setBounds(300, 39, 190, 350);
+		PhonePanel.add(ScreenHomePanel);
+		
+		JPanel ScreenBrowsePanel = new JPanel();
+		ScreenBrowsePanel.setLayout(null);
+		ScreenBrowsePanel.setBackground(Color.WHITE);
+		ScreenBrowsePanel.setVisible(true);
+		ScreenBrowsePanel.setBounds(30, 39, 190, 350);
+		PhonePanel.add(ScreenBrowsePanel);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(Color.WHITE);
+		panel_3.setBounds(10, 11, 170, 67);
+		ScreenBrowsePanel.add(panel_3);
+		panel_3.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/social.png")));
+		lblNewLabel_1.setBounds(0, 0, 170, 67);
+		panel_3.add(lblNewLabel_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 12));
+		textField_1.setColumns(10);
+		textField_1.setBounds(10, 76, 170, 25);
+		ScreenBrowsePanel.add(textField_1);
+		
+		JButton btnNewButton_1 = new JButton("Search");
+		btnNewButton_1.setBounds(91, 110, 89, 23);
+		ScreenBrowsePanel.add(btnNewButton_1);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(Color.WHITE);
+		panel_4.setBounds(10, 169, 170, 170);
+		ScreenBrowsePanel.add(panel_4);
+		panel_4.setLayout(null);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/default photo.png")));
+		lblNewLabel_2.setBounds(0, 0, 170, 170);
+		panel_4.add(lblNewLabel_2);
+		
+		JPanel PhBackgroundPanel = new JPanel();
+		PhBackgroundPanel.setBackground(new Color(240, 255, 255));
+		PhBackgroundPanel.setBounds(0, 0, 250, 474);
+		PhonePanel.add(PhBackgroundPanel);
+		PhBackgroundPanel.setLayout(null);
+		
+		JLabel Lbl_Phone_Img = new JLabel("");
+		Lbl_Phone_Img.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/Phone Frame.png")));
+		Lbl_Phone_Img.setBounds(0, 0, 250, 474);
+		PhBackgroundPanel.add(Lbl_Phone_Img);
 		
 		JPanel InternetPanel = new JPanel();
 		InternetPanel.setBorder(new LineBorder(Color.BLUE));

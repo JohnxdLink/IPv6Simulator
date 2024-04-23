@@ -12,6 +12,8 @@ import java.awt.Font;
 import javax.swing.border.LineBorder;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainWindow {
 	/*s
@@ -88,19 +90,6 @@ public class MainWindow {
 		Lbl_Text_Logo.setBounds(95, 0, 228, 65);
 		HeaderPanel.add(Lbl_Text_Logo);
 		
-		JPanel WifiBtnPanel = new JPanel();
-		WifiBtnPanel.setBackground(new Color(240, 255, 255));
-		WifiBtnPanel.setBounds(1019, 0, 65, 65);
-		HeaderPanel.add(WifiBtnPanel);
-		WifiBtnPanel.setLayout(null);
-		
-		JButton WifiBtn = new JButton("");
-		WifiBtn.setBackground(new Color(240, 255, 255));
-		WifiBtn.setBorder(null);
-		WifiBtn.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/Wifi Icon.png")));
-		WifiBtn.setBounds(0, 0, 65, 65);
-		WifiBtnPanel.add(WifiBtn);
-		
 		JPanel PhonePanel = new JPanel();
 		PhonePanel.setBackground(new Color(240, 255, 255));
 		PhonePanel.setBounds(10, 76, 250, 474);
@@ -113,49 +102,10 @@ public class MainWindow {
 		PhonePanel.add(PhMenuPanel);
 		PhMenuPanel.setLayout(null);
 		
-		JPanel PhSettingsPanel = new JPanel();
-		PhSettingsPanel.setBackground(Color.WHITE);
-		PhSettingsPanel.setBounds(10, 0, 36, 36);
-		PhMenuPanel.add(PhSettingsPanel);
-		PhSettingsPanel.setLayout(null);
-		
-		JButton BtnPhSetting = new JButton("");
-		BtnPhSetting.setBackground(new Color(255, 255, 255));
-		BtnPhSetting.setBorder(null);
-		BtnPhSetting.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/setting.png")));
-		BtnPhSetting.setBounds(0, 0, 36, 36);
-		PhSettingsPanel.add(BtnPhSetting);
-		
-		JPanel PhBrowsePanel = new JPanel();
-		PhBrowsePanel.setBackground(Color.WHITE);
-		PhBrowsePanel.setBounds(144, 0, 36, 36);
-		PhMenuPanel.add(PhBrowsePanel);
-		PhBrowsePanel.setLayout(null);
-		
-		JButton BtnPhBrowser = new JButton("");
-		BtnPhBrowser.setBackground(new Color(255, 255, 255));
-		BtnPhBrowser.setBorder(null);
-		BtnPhBrowser.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/browser.png")));
-		BtnPhBrowser.setBounds(0, 0, 36, 36);
-		PhBrowsePanel.add(BtnPhBrowser);
-		
-		JPanel PhHomePanel = new JPanel();
-		PhHomePanel.setBackground(Color.WHITE);
-		PhHomePanel.setBounds(76, 0, 36, 36);
-		PhMenuPanel.add(PhHomePanel);
-		PhHomePanel.setLayout(null);
-		
-		JButton BtnPhHome = new JButton("");
-		BtnPhHome.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/home.png")));
-		BtnPhHome.setBorder(null);
-		BtnPhHome.setBackground(new Color(255, 255, 255));
-		BtnPhHome.setBounds(0, 0, 36, 36);
-		PhHomePanel.add(BtnPhHome);
-		
 		JPanel ScreenSettingPanel = new JPanel();
 		ScreenSettingPanel.setBackground(Color.WHITE);
 		ScreenSettingPanel.setBounds(30, 39, 190, 350);
-		ScreenSettingPanel.setVisible(true);
+		ScreenSettingPanel.setVisible(false);
 		PhonePanel.add(ScreenSettingPanel);
 		ScreenSettingPanel.setLayout(null);
 		
@@ -259,7 +209,7 @@ public class MainWindow {
 		ScreenHomePanel.setLayout(null);
 		ScreenHomePanel.setBackground(Color.WHITE);
 		ScreenHomePanel.setVisible(false);
-		ScreenHomePanel.setBounds(300, 39, 190, 350);
+		ScreenHomePanel.setBounds(30, 39, 190, 350);
 		PhonePanel.add(ScreenHomePanel);
 		
 		JPanel ScreenBrowsePanel = new JPanel();
@@ -297,7 +247,7 @@ public class MainWindow {
 		panel_4.setLayout(null);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/default photo.png")));
+		lblNewLabel_2.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/dog_images/shepherd.png")));
 		lblNewLabel_2.setBounds(0, 0, 170, 170);
 		panel_4.add(lblNewLabel_2);
 		
@@ -311,7 +261,7 @@ public class MainWindow {
 		Lbl_Phone_Img.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/Phone Frame.png")));
 		Lbl_Phone_Img.setBounds(0, 0, 250, 474);
 		PhBackgroundPanel.add(Lbl_Phone_Img);
-		
+
 		JPanel InternetPanel = new JPanel();
 		InternetPanel.setBorder(new LineBorder(Color.BLUE));
 		InternetPanel.setLayout(null);
@@ -477,5 +427,88 @@ public class MainWindow {
 		Lbl_Process_Img.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/Process Icon.png")));
 		Lbl_Process_Img.setBounds(10, 11, 170, 170);
 		SummaryPanel.add(Lbl_Process_Img);
+		
+		/* JPanels & Buttons */
+		JPanel WifiBtnPanel = new JPanel();
+		WifiBtnPanel.setBackground(new Color(240, 255, 255));
+		WifiBtnPanel.setBounds(1019, 0, 65, 65);
+		HeaderPanel.add(WifiBtnPanel);
+		WifiBtnPanel.setLayout(null);
+		
+		JButton WifiBtn = new JButton("");
+		WifiBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Lbl_Wifi_Indicator.setText("ON");
+				Lbl_Wifi_Indicator.setForeground(new Color(127, 255, 0));
+			}
+		});
+		WifiBtn.setBackground(new Color(240, 255, 255));
+		WifiBtn.setBorder(null);
+		WifiBtn.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/Wifi Icon.png")));
+		WifiBtn.setBounds(0, 0, 65, 65);
+		WifiBtnPanel.add(WifiBtn);
+		
+		JPanel PhSettingsPanel = new JPanel();
+		PhSettingsPanel.setBackground(Color.WHITE);
+		PhSettingsPanel.setBounds(10, 0, 36, 36);
+		PhMenuPanel.add(PhSettingsPanel);
+		PhSettingsPanel.setLayout(null);
+		
+		JButton BtnPhSetting = new JButton("");
+		BtnPhSetting.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ScreenSettingPanel.setVisible(true);
+				ScreenHomePanel.setVisible(false);
+				ScreenBrowsePanel.setVisible(false);
+				
+			}
+		});
+		BtnPhSetting.setBackground(new Color(255, 255, 255));
+		BtnPhSetting.setBorder(null);
+		BtnPhSetting.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/setting.png")));
+		BtnPhSetting.setBounds(0, 0, 36, 36);
+		PhSettingsPanel.add(BtnPhSetting);
+		
+		JPanel PhBrowsePanel = new JPanel();
+		PhBrowsePanel.setBackground(Color.WHITE);
+		PhBrowsePanel.setBounds(144, 0, 36, 36);
+		PhMenuPanel.add(PhBrowsePanel);
+		PhBrowsePanel.setLayout(null);
+		
+		JButton BtnPhBrowser = new JButton("");
+		BtnPhBrowser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ScreenSettingPanel.setVisible(false);
+				ScreenHomePanel.setVisible(false);
+				ScreenBrowsePanel.setVisible(true);
+			}
+		});
+		BtnPhBrowser.setBackground(new Color(255, 255, 255));
+		BtnPhBrowser.setBorder(null);
+		BtnPhBrowser.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/browser.png")));
+		BtnPhBrowser.setBounds(0, 0, 36, 36);
+		PhBrowsePanel.add(BtnPhBrowser);
+		
+		JPanel PhHomePanel = new JPanel();
+		PhHomePanel.setBackground(Color.WHITE);
+		PhHomePanel.setBounds(76, 0, 36, 36);
+		PhMenuPanel.add(PhHomePanel);
+		PhHomePanel.setLayout(null);
+		
+		JButton BtnPhHome = new JButton("");
+		BtnPhHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ScreenSettingPanel.setVisible(false);
+				ScreenHomePanel.setVisible(true);
+				ScreenBrowsePanel.setVisible(false);
+			}
+		});
+		BtnPhHome.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/home.png")));
+		BtnPhHome.setBorder(null);
+		BtnPhHome.setBackground(new Color(255, 255, 255));
+		BtnPhHome.setBounds(0, 0, 36, 36);
+		PhHomePanel.add(BtnPhHome);
+		
+		/* End of JPanels & Buttons */
 	}
 }

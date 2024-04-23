@@ -9,13 +9,24 @@ import java.awt.Toolkit;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
-import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 public class MainWindow {
+	/*s
+	 * Project      : IPv6 Simulator
+	 * Developer    : Castro John Christian
+	 * Message      : 
+	 * Date Created : 04/22/2024
+	 */
 
 	private JFrame frmWelcomeIpv;
+	private JTextField TxtF_Wifi_Name;
+	private JTextField TxtF_Ip_Four_Add;
+	private JTextField TxtF_Subnet;
+	private JTextField textField_2;
+	private JTextField TxtF_Net_Prefix;
 
 	/**
 	 * Launch the application.
@@ -99,6 +110,56 @@ public class MainWindow {
 		Lbl_Phone_Img.setBounds(0, 0, 250, 474);
 		PhonePanel.add(Lbl_Phone_Img);
 		
+		JPanel PhMenuPanel = new JPanel();
+		PhMenuPanel.setBackground(Color.WHITE);
+		PhMenuPanel.setBounds(30, 400, 190, 40);
+		PhonePanel.add(PhMenuPanel);
+		PhMenuPanel.setLayout(null);
+		
+		JPanel PhSettingsPanel = new JPanel();
+		PhSettingsPanel.setBackground(Color.WHITE);
+		PhSettingsPanel.setBounds(10, 0, 36, 36);
+		PhMenuPanel.add(PhSettingsPanel);
+		PhSettingsPanel.setLayout(null);
+		
+		JButton BtnPhSetting = new JButton("");
+		BtnPhSetting.setBackground(new Color(255, 255, 255));
+		BtnPhSetting.setBorder(null);
+		BtnPhSetting.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/setting.png")));
+		BtnPhSetting.setBounds(0, 0, 36, 36);
+		PhSettingsPanel.add(BtnPhSetting);
+		
+		JPanel PhBrowsePanel = new JPanel();
+		PhBrowsePanel.setBackground(Color.WHITE);
+		PhBrowsePanel.setBounds(144, 0, 36, 36);
+		PhMenuPanel.add(PhBrowsePanel);
+		PhBrowsePanel.setLayout(null);
+		
+		JButton BtnPhBrowser = new JButton("");
+		BtnPhBrowser.setBackground(new Color(255, 255, 255));
+		BtnPhBrowser.setBorder(null);
+		BtnPhBrowser.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/browser.png")));
+		BtnPhBrowser.setBounds(0, 0, 36, 36);
+		PhBrowsePanel.add(BtnPhBrowser);
+		
+		JPanel PhHomePanel = new JPanel();
+		PhHomePanel.setBackground(Color.WHITE);
+		PhHomePanel.setBounds(76, 0, 36, 36);
+		PhMenuPanel.add(PhHomePanel);
+		PhHomePanel.setLayout(null);
+		
+		JButton BtnPhHome = new JButton("");
+		BtnPhHome.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/home.png")));
+		BtnPhHome.setBorder(null);
+		BtnPhHome.setBackground(new Color(255, 255, 255));
+		BtnPhHome.setBounds(0, 0, 36, 36);
+		PhHomePanel.add(BtnPhHome);
+		
+		JPanel PhScreenPanel = new JPanel();
+		PhScreenPanel.setBackground(Color.WHITE);
+		PhScreenPanel.setBounds(30, 39, 190, 350);
+		PhonePanel.add(PhScreenPanel);
+		
 		JPanel InternetPanel = new JPanel();
 		InternetPanel.setBorder(new LineBorder(Color.BLUE));
 		InternetPanel.setLayout(null);
@@ -108,14 +169,25 @@ public class MainWindow {
 		
 		JLabel Lbl_Internet_Img = new JLabel("");
 		Lbl_Internet_Img.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/Internet Icon.png")));
-		Lbl_Internet_Img.setBounds(49, 11, 160, 160);
+		Lbl_Internet_Img.setBounds(50, 70, 160, 160);
 		InternetPanel.add(Lbl_Internet_Img);
+		
+		JLabel Lbl_Internet_Stat = new JLabel("Internet:");
+		Lbl_Internet_Stat.setFont(new Font("Franklin Gothic Medium Cond", Font.PLAIN, 18));
+		Lbl_Internet_Stat.setBounds(10, 0, 80, 25);
+		InternetPanel.add(Lbl_Internet_Stat);
+		
+		JLabel Lbl_Internet_Indicator = new JLabel("NOT CONNECTED");
+		Lbl_Internet_Indicator.setForeground(Color.RED);
+		Lbl_Internet_Indicator.setFont(new Font("Franklin Gothic Medium Cond", Font.BOLD, 18));
+		Lbl_Internet_Indicator.setBounds(70, 0, 138, 25);
+		InternetPanel.add(Lbl_Internet_Indicator);
 		
 		JPanel RouterPanel = new JPanel();
 		RouterPanel.setBorder(new LineBorder(Color.BLUE));
 		RouterPanel.setLayout(null);
 		RouterPanel.setBackground(new Color(240, 255, 255));
-		RouterPanel.setBounds(270, 76, 554, 237);
+		RouterPanel.setBounds(270, 76, 554, 285);
 		WholePanel.add(RouterPanel);
 		
 		JLabel Lbl_Router_Img = new JLabel("");
@@ -128,27 +200,130 @@ public class MainWindow {
 		Lbl_Wifi_Stat.setBounds(10, 0, 80, 25);
 		RouterPanel.add(Lbl_Wifi_Stat);
 		
-		JLabel Lbl_Wifi_Stat_1 = new JLabel("OFF");
-		Lbl_Wifi_Stat_1.setForeground(Color.RED);
-		Lbl_Wifi_Stat_1.setBounds(90, 0, 50, 25);
-		RouterPanel.add(Lbl_Wifi_Stat_1);
-		Lbl_Wifi_Stat_1.setFont(new Font("Franklin Gothic Medium Cond", Font.BOLD, 18));
+		JLabel Lbl_Wifi_Indicator = new JLabel("OFF");
+		Lbl_Wifi_Indicator.setForeground(Color.RED);
+		Lbl_Wifi_Indicator.setBounds(90, 0, 50, 25);
+		RouterPanel.add(Lbl_Wifi_Indicator);
+		Lbl_Wifi_Indicator.setFont(new Font("Franklin Gothic Medium Cond", Font.BOLD, 18));
 		
 		JPanel RouterInfoPanel = new JPanel();
 		RouterInfoPanel.setBackground(new Color(84, 117, 128));
-		RouterInfoPanel.setBounds(190, 11, 354, 215);
+		RouterInfoPanel.setBounds(190, 11, 354, 263);
 		RouterPanel.add(RouterInfoPanel);
+		RouterInfoPanel.setLayout(null);
+		
+		JPanel SubRouterInfoPanel01 = new JPanel();
+		SubRouterInfoPanel01.setBackground(new Color(84, 117, 128));
+		SubRouterInfoPanel01.setBounds(10, 11, 334, 33);
+		RouterInfoPanel.add(SubRouterInfoPanel01);
+		SubRouterInfoPanel01.setLayout(null);
+		
+		JLabel Lbl_Wifi_Name = new JLabel("Wifi Name:");
+		Lbl_Wifi_Name.setForeground(new Color(101, 221, 185));
+		Lbl_Wifi_Name.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 16));
+		Lbl_Wifi_Name.setBounds(0, 0, 125, 33);
+		SubRouterInfoPanel01.add(Lbl_Wifi_Name);
+		
+		TxtF_Wifi_Name = new JTextField();
+		TxtF_Wifi_Name.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 16));
+		TxtF_Wifi_Name.setBounds(135, 0, 199, 33);
+		SubRouterInfoPanel01.add(TxtF_Wifi_Name);
+		TxtF_Wifi_Name.setColumns(10);
+		
+		JPanel SubRouterInfoPanel02 = new JPanel();
+		SubRouterInfoPanel02.setLayout(null);
+		SubRouterInfoPanel02.setBackground(new Color(84, 117, 128));
+		SubRouterInfoPanel02.setBounds(10, 55, 334, 33);
+		RouterInfoPanel.add(SubRouterInfoPanel02);
+		
+		JLabel Lbl_Ip_Four_Add = new JLabel("Ipv4 Address:");
+		Lbl_Ip_Four_Add.setForeground(new Color(101, 221, 185));
+		Lbl_Ip_Four_Add.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 16));
+		Lbl_Ip_Four_Add.setBounds(0, 0, 125, 33);
+		SubRouterInfoPanel02.add(Lbl_Ip_Four_Add);
+		
+		TxtF_Ip_Four_Add = new JTextField();
+		TxtF_Ip_Four_Add.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 16));
+		TxtF_Ip_Four_Add.setColumns(10);
+		TxtF_Ip_Four_Add.setBounds(135, 0, 199, 33);
+		SubRouterInfoPanel02.add(TxtF_Ip_Four_Add);
+		
+		JPanel SubRouterInfoPanel03 = new JPanel();
+		SubRouterInfoPanel03.setLayout(null);
+		SubRouterInfoPanel03.setBackground(new Color(84, 117, 128));
+		SubRouterInfoPanel03.setBounds(10, 99, 334, 33);
+		RouterInfoPanel.add(SubRouterInfoPanel03);
+		
+		JLabel Lbl_Subnet_Name = new JLabel("Subnet Mask:");
+		Lbl_Subnet_Name.setForeground(new Color(101, 221, 185));
+		Lbl_Subnet_Name.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 16));
+		Lbl_Subnet_Name.setBounds(0, 0, 125, 33);
+		SubRouterInfoPanel03.add(Lbl_Subnet_Name);
+		
+		TxtF_Subnet = new JTextField();
+		TxtF_Subnet.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 16));
+		TxtF_Subnet.setColumns(10);
+		TxtF_Subnet.setBounds(135, 0, 199, 33);
+		SubRouterInfoPanel03.add(TxtF_Subnet);
+		
+		JPanel SubRouterInfoPanel04 = new JPanel();
+		SubRouterInfoPanel04.setLayout(null);
+		SubRouterInfoPanel04.setBackground(new Color(84, 117, 128));
+		SubRouterInfoPanel04.setBounds(10, 143, 334, 33);
+		RouterInfoPanel.add(SubRouterInfoPanel04);
+		
+		JLabel Lbl_Gateway = new JLabel("Gateway:");
+		Lbl_Gateway.setForeground(new Color(101, 221, 185));
+		Lbl_Gateway.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 16));
+		Lbl_Gateway.setBounds(0, 0, 125, 33);
+		SubRouterInfoPanel04.add(Lbl_Gateway);
+		
+		textField_2 = new JTextField();
+		textField_2.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 16));
+		textField_2.setColumns(10);
+		textField_2.setBounds(135, 0, 199, 33);
+		SubRouterInfoPanel04.add(textField_2);
+		
+		JPanel SubRouterInfoPanel05 = new JPanel();
+		SubRouterInfoPanel05.setLayout(null);
+		SubRouterInfoPanel05.setBackground(new Color(84, 117, 128));
+		SubRouterInfoPanel05.setBounds(10, 187, 334, 33);
+		RouterInfoPanel.add(SubRouterInfoPanel05);
+		
+		JLabel Lbl_Net_Prefix_Name = new JLabel("Network Prefix:");
+		Lbl_Net_Prefix_Name.setForeground(new Color(101, 221, 185));
+		Lbl_Net_Prefix_Name.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 16));
+		Lbl_Net_Prefix_Name.setBounds(0, 0, 125, 33);
+		SubRouterInfoPanel05.add(Lbl_Net_Prefix_Name);
+		
+		TxtF_Net_Prefix = new JTextField();
+		TxtF_Net_Prefix.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 16));
+		TxtF_Net_Prefix.setColumns(10);
+		TxtF_Net_Prefix.setBounds(135, 0, 199, 33);
+		SubRouterInfoPanel05.add(TxtF_Net_Prefix);
+		
+		JButton BtnGenerate = new JButton("Generate");
+		BtnGenerate.setFocusable(false);
+		BtnGenerate.setBackground(new Color(255, 255, 119));
+		BtnGenerate.setBounds(10, 229, 167, 23);
+		RouterInfoPanel.add(BtnGenerate);
+		
+		JButton BtnSave = new JButton("Save");
+		BtnSave.setFocusable(false);
+		BtnSave.setBackground(new Color(127, 255, 0));
+		BtnSave.setBounds(177, 229, 167, 23);
+		RouterInfoPanel.add(BtnSave);
 		
 		JPanel SummaryPanel = new JPanel();
 		SummaryPanel.setBorder(new LineBorder(Color.BLUE));
 		SummaryPanel.setLayout(null);
 		SummaryPanel.setBackground(new Color(240, 255, 255));
-		SummaryPanel.setBounds(270, 313, 554, 237);
+		SummaryPanel.setBounds(270, 360, 554, 190);
 		WholePanel.add(SummaryPanel);
 		
 		JLabel Lbl_Process_Img = new JLabel("");
 		Lbl_Process_Img.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/Process Icon.png")));
-		Lbl_Process_Img.setBounds(10, 39, 170, 170);
+		Lbl_Process_Img.setBounds(10, 11, 170, 170);
 		SummaryPanel.add(Lbl_Process_Img);
 	}
 }

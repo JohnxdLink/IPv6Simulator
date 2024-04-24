@@ -559,13 +559,19 @@ public class MainWindow {
 					
 					phoneIpv4Address = NetworkConfigurations.getPhoneIpv4Address();
 					macAddress = NetworkConfigurations.getMacAddress();
-					//Ipv6Configuration = 
 					
 					Lbl_Mac_Address.setText("Mac Address: " + macAddress);
 					Lbl_Ipv4_Address_Connected.setText("Ipv4 Address: " + phoneIpv4Address);
 					
 					Ipv6Process.setInternetNetworkPrefix(networkPrefix);
 					Ipv6Process.setDeviceMacAddress(macAddress);
+					
+					String getNetworkPrefix = Ipv6Process.getInternetNetworkPrefix();
+					String getMacAddress = Ipv6Process.getDeviceMacAddress();
+					
+					phoneIpv6Address = Ipv6Configuration.getIpv6ConfigComplete(getNetworkPrefix, getMacAddress);
+					Lbl_Ipv6_Address_Connected.setText(phoneIpv6Address);
+				
 					
 				} else if(phoneWifi.isEmpty()) {
 					Lbl_Status.setText("Status: No Connection");

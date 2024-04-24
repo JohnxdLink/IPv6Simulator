@@ -24,6 +24,8 @@ public class MainWindow {
 	 */
 	
 	GetConfigurations NetworkConfigurations = new GetConfigurations();
+	GetIpv6Config Ipv6Process = new GetIpv6Config();
+	Ipv6Config Ipv6Configuration = new Ipv6Config();
 
 	private JFrame frmWelcomeIpv;
 	private JTextField TxtF_Wifi_Name;
@@ -35,12 +37,15 @@ public class MainWindow {
 	private JTextField TxtF_Google_Search;
 	
 	String wifiName;
-	String phoneWifi;
 	String defaultGateway;
 	String subnetMask;
 	String ipv4Address;
 	String networkPrefix;
 	String macAddress;
+	
+	String phoneWifi;
+	String phoneIpv4Address;
+	String phoneIpv6Address;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -546,8 +551,22 @@ public class MainWindow {
 				phoneWifi = TxtField_Setting_Wifi_Name.getText();
 				
 				if(phoneWifi.equalsIgnoreCase(wifiName)) {
+					
 					TxtField_Setting_Wifi_Name.setText(phoneWifi);
 					Lbl_Status.setText("Status: Connected");
+					
+					Lbl_Wifi_Name_Connected.setText("Wifi: " + phoneWifi);
+					
+					phoneIpv4Address = NetworkConfigurations.getPhoneIpv4Address();
+					macAddress = NetworkConfigurations.getMacAddress();
+					//Ipv6Configuration = 
+					
+					Lbl_Mac_Address.setText("Mac Address: " + macAddress);
+					Lbl_Ipv4_Address_Connected.setText("Ipv4 Address: " + phoneIpv4Address);
+					
+					Ipv6Process.setInternetNetworkPrefix(networkPrefix);
+					Ipv6Process.setDeviceMacAddress(macAddress);
+					
 				} else if(phoneWifi.isEmpty()) {
 					Lbl_Status.setText("Status: No Connection");
 				} else {

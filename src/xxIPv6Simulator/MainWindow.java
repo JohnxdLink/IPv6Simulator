@@ -280,6 +280,22 @@ public class MainWindow {
 		Lbl_Internet_Indicator.setBounds(70, 0, 138, 25);
 		InternetPanel.add(Lbl_Internet_Indicator);
 		
+		JPanel SettingPanel03_1 = new JPanel();
+		SettingPanel03_1.setLayout(null);
+		SettingPanel03_1.setBounds(10, 217, 230, 30);
+		InternetPanel.add(SettingPanel03_1);
+		
+		JButton Btn_Setting_Connect_1 = new JButton("Send Feedback");
+		Btn_Setting_Connect_1.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 14));
+		Btn_Setting_Connect_1.setBackground(new Color(127, 255, 0));
+		Btn_Setting_Connect_1.setBounds(0, 0, 230, 30);
+		SettingPanel03_1.add(Btn_Setting_Connect_1);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/default photo.png")));
+		lblNewLabel_3.setBounds(40, 268, 170, 170);
+		InternetPanel.add(lblNewLabel_3);
+		
 		JPanel RouterPanel = new JPanel();
 		RouterPanel.setBorder(new LineBorder(Color.BLUE));
 		RouterPanel.setLayout(null);
@@ -415,6 +431,46 @@ public class MainWindow {
 		Lbl_Process_Img.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/Process Icon.png")));
 		Lbl_Process_Img.setBounds(10, 11, 170, 170);
 		SummaryPanel.add(Lbl_Process_Img);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(190, 11, 354, 170);
+		SummaryPanel.add(panel);
+		panel.setLayout(null);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(0, 0, 354, 85);
+		panel.add(panel_1);
+		panel_1.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Client Request");
+		lblNewLabel.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 18));
+		lblNewLabel.setBounds(10, 0, 138, 21);
+		panel_1.add(lblNewLabel);
+		
+		JLabel lblNewLabel_2 = new JLabel("0000:0000:0000:0000");
+		lblNewLabel_2.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 12));
+		lblNewLabel_2.setBounds(10, 23, 334, 21);
+		panel_1.add(lblNewLabel_2);
+		
+		JLabel lblSendSuccessfully = new JLabel("SEND SUCCESSFULLY");
+		lblSendSuccessfully.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 20));
+		lblSendSuccessfully.setBounds(148, 53, 196, 21);
+		panel_1.add(lblSendSuccessfully);
+		
+		JPanel panel_1_1 = new JPanel();
+		panel_1_1.setBounds(0, 85, 354, 85);
+		panel.add(panel_1_1);
+		panel_1_1.setLayout(null);
+		
+		JLabel lblInternetResponse = new JLabel("Internet Response");
+		lblInternetResponse.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 18));
+		lblInternetResponse.setBounds(10, 0, 164, 21);
+		panel_1_1.add(lblInternetResponse);
+		
+		JLabel lblRespondedSuccessfully = new JLabel("RESPONDED SUCCESSFULLY");
+		lblRespondedSuccessfully.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 20));
+		lblRespondedSuccessfully.setBounds(76, 53, 268, 21);
+		panel_1_1.add(lblRespondedSuccessfully);
 		
 		/* JPanels & Buttons */
 		JPanel WifiBtnPanel = new JPanel();

@@ -5,8 +5,8 @@ import java.util.Random;
 public class PhotoDogCats {
 	Random RandomSelectedAnimal = new Random();
 	
-	private String dogFolderPath = "/xxIPv6Simulator/dog_images";
-	private String catFolderPath = "/xxIPv6Simulator/cat_images";
+	private String dogFolderPath = "/xxIPv6Simulator/dog_images/";
+	private String catFolderPath = "/xxIPv6Simulator/cat_images/";
 	private String[] dogs = {"beagle", "k9", "retriever",  "spitz"};
 	private String[] cats = {"persian", "philippine", "rogdoll", "scottish", "siberian"};
 	

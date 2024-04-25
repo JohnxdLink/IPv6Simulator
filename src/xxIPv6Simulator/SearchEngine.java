@@ -13,10 +13,10 @@ public class SearchEngine {
 		
 		if(!ipv6Add.isEmpty()) {
 			if(search.equalsIgnoreCase("Dog")) {
-				selectedImage = DogNCat.getDogFolderPath() + DogNCat.getDogSelected();
+				selectedImage = DogNCat.getDogFolderPath() + DogNCat.getDogSelected() + ".png";
 				
 			} else if(search.equalsIgnoreCase("Cat")) {
-				selectedImage = DogNCat.getDogFolderPath() + DogNCat.getCatSelected();
+				selectedImage = DogNCat.getCatFolderPath() + DogNCat.getCatSelected() + ".png";
 			} else {
 				return null;
 			}

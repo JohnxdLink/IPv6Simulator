@@ -287,11 +287,6 @@ public class MainWindow {
 		Lbl_Preview_Image.setBounds(40, 251, 170, 170);
 		InternetPanel.add(Lbl_Preview_Image);
 		
-		JButton btnNewButton = new JButton("Proceed");
-		btnNewButton.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 14));
-		btnNewButton.setBounds(151, 440, 89, 23);
-		InternetPanel.add(btnNewButton);
-		
 		JPanel RouterPanel = new JPanel();
 		RouterPanel.setBorder(new LineBorder(Color.BLUE));
 		RouterPanel.setLayout(null);
@@ -464,7 +459,7 @@ public class MainWindow {
 		Lbl_Internet_Response.setBounds(10, 0, 164, 21);
 		PanelSummaryBot.add(Lbl_Internet_Response);
 		
-		JLabel Lbl_Responded_Indicator = new JLabel("RESPONDED SUCCESSFULLY");
+		JLabel Lbl_Responded_Indicator = new JLabel("NO RESPONSE YET");
 		Lbl_Responded_Indicator.setHorizontalAlignment(SwingConstants.RIGHT);
 		Lbl_Responded_Indicator.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 20));
 		Lbl_Responded_Indicator.setBounds(10, 53, 334, 21);
@@ -679,9 +674,12 @@ public class MainWindow {
 		SendFeedbackPanel.setBounds(10, 217, 230, 30);
 		InternetPanel.add(SendFeedbackPanel);
 		
-		JButton Btn_Send_Feedback = new JButton("Send Feedback");
+		// Send Feedback Response
+		JButton Btn_Send_Feedback = new JButton("View Image");
 		Btn_Send_Feedback.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Lbl_Responded_Indicator.setText("INTERNET IS RESPONDING");
+				Lbl_Responded_Indicator.setForeground(new Color(101, 221, 185));
 				Lbl_Preview_Image.setIcon(new ImageIcon(MainWindow.class.getResource(googleSearch.getSelectedImage())));
 			}
 		});
@@ -689,6 +687,22 @@ public class MainWindow {
 		Btn_Send_Feedback.setBackground(new Color(127, 255, 0));
 		Btn_Send_Feedback.setBounds(0, 0, 230, 30);
 		SendFeedbackPanel.add(Btn_Send_Feedback);
+		
+		JButton Btn_Response_Feedback = new JButton("Send Feedback");
+		Btn_Response_Feedback.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Lbl_Responded_Indicator.setText("RESPONDED SUCCESSFULLY");
+				Lbl_Responded_Indicator.setForeground(new Color(0, 225, 255));
+				TxtF_Google_Search.setText(null);
+				
+				Lbl_Preview_Image.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/default photo.png")));
+				Lbl_Google_Images.setIcon(new ImageIcon(MainWindow.class.getResource(googleSearch.getSelectedImage())));	
+			}
+		});
+		Btn_Response_Feedback.setBackground(new Color(101, 221, 185));
+		Btn_Response_Feedback.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 14));
+		Btn_Response_Feedback.setBounds(10, 440, 230, 23);
+		InternetPanel.add(Btn_Response_Feedback);
 		
 		/* End of JPanels & Buttons */
 	}

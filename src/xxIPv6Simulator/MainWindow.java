@@ -468,11 +468,39 @@ public class MainWindow {
 		/* JPanels & Buttons */
 		JPanel WifiBtnPanel = new JPanel();
 		WifiBtnPanel.setBackground(new Color(240, 255, 255));
-		WifiBtnPanel.setBounds(1019, 0, 65, 65);
+		WifiBtnPanel.setBounds(800, 0, 65, 65);
 		HeaderPanel.add(WifiBtnPanel);
 		WifiBtnPanel.setLayout(null);
 		
+		JButton Btn_Restart = new JButton("");
+		Btn_Restart.setBackground(new Color(240, 255, 255));
+		Btn_Restart.setBorder(null);
+		Btn_Restart.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/reset.png")));
+		Btn_Restart.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        // Dispose the current frame
+		        frmWelcomeIpv.dispose();
+
+		        // Create a new instance of MainWindow
+		        EventQueue.invokeLater(new Runnable() {
+		            public void run() {
+		                try {
+		                    MainWindow window = new MainWindow();
+		                    window.frmWelcomeIpv.setVisible(true);
+		                } catch (Exception e) {
+		                    e.printStackTrace();
+		                }
+		            }
+		        });
+		    }
+		});
+		Btn_Restart.setBounds(1019, 0, 65, 65);
+		HeaderPanel.add(Btn_Restart);
+		
 		JButton WifiBtn = new JButton("");
+		WifiBtn.setBounds(955, 0, 65, 65);
+		HeaderPanel.add(WifiBtn);
 		WifiBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Lbl_Wifi_Indicator.setText("ON");
@@ -483,8 +511,6 @@ public class MainWindow {
 		WifiBtn.setBackground(new Color(240, 255, 255));
 		WifiBtn.setBorder(null);
 		WifiBtn.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/Wifi Icon.png")));
-		WifiBtn.setBounds(0, 0, 65, 65);
-		WifiBtnPanel.add(WifiBtn);
 		
 		JButton BtnGenerate = new JButton("Generate");
 		BtnGenerate.addActionListener(new ActionListener() {
@@ -631,6 +657,7 @@ public class MainWindow {
 				}
 			}
 		});
+		Btn_Setting_Connect.setFocusable(false);
 		Btn_Setting_Connect.setBackground(new Color(127, 255, 0));
 		Btn_Setting_Connect.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 14));
 		Btn_Setting_Connect.setBounds(0, 0, 190, 30);
@@ -692,7 +719,7 @@ public class MainWindow {
 		Btn_Response_Feedback.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Lbl_Responded_Indicator.setText("RESPONDED SUCCESSFULLY");
-				Lbl_Responded_Indicator.setForeground(new Color(0, 225, 255));
+				Lbl_Responded_Indicator.setForeground(new Color(0, 225, 0));
 				TxtF_Google_Search.setText(null);
 				
 				Lbl_Preview_Image.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/default photo.png")));

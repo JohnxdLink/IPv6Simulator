@@ -213,6 +213,23 @@ public class MainWindow {
 		ScreenHomePanel.setBounds(30, 39, 190, 350);
 		PhonePanel.add(ScreenHomePanel);
 		
+		JLabel Lbl_Home_Time = new JLabel("01:49");
+		Lbl_Home_Time.setHorizontalAlignment(SwingConstants.CENTER);
+		Lbl_Home_Time.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 24));
+		Lbl_Home_Time.setBounds(10, 11, 170, 34);
+		ScreenHomePanel.add(Lbl_Home_Time);
+		
+		JLabel Lbl_Home_Time_1 = new JLabel("04/22/2024");
+		Lbl_Home_Time_1.setHorizontalAlignment(SwingConstants.CENTER);
+		Lbl_Home_Time_1.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 12));
+		Lbl_Home_Time_1.setBounds(10, 37, 170, 21);
+		ScreenHomePanel.add(Lbl_Home_Time_1);
+		
+		JLabel Lbl_Illustration = new JLabel("");
+		Lbl_Illustration.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/home illustration.png")));
+		Lbl_Illustration.setBounds(0, 69, 190, 270);
+		ScreenHomePanel.add(Lbl_Illustration);
+		
 		JPanel ScreenBrowsePanel = new JPanel();
 		ScreenBrowsePanel.setLayout(null);
 		ScreenBrowsePanel.setBackground(Color.WHITE);
@@ -260,7 +277,7 @@ public class MainWindow {
 		PhBackgroundPanel.add(Lbl_Phone_Img);
 
 		JPanel InternetPanel = new JPanel();
-		InternetPanel.setBorder(new LineBorder(Color.BLUE));
+		InternetPanel.setBorder(null);
 		InternetPanel.setLayout(null);
 		InternetPanel.setBackground(new Color(240, 255, 255));
 		InternetPanel.setBounds(834, 76, 250, 474);
@@ -288,7 +305,7 @@ public class MainWindow {
 		InternetPanel.add(Lbl_Preview_Image);
 		
 		JPanel RouterPanel = new JPanel();
-		RouterPanel.setBorder(new LineBorder(Color.BLUE));
+		RouterPanel.setBorder(null);
 		RouterPanel.setLayout(null);
 		RouterPanel.setBackground(new Color(240, 255, 255));
 		RouterPanel.setBounds(270, 76, 554, 285);
@@ -412,7 +429,7 @@ public class MainWindow {
 		SubRouterInfoPanel05.add(TxtF_Net_Prefix);
 		
 		JPanel SummaryPanel = new JPanel();
-		SummaryPanel.setBorder(new LineBorder(Color.BLUE));
+		SummaryPanel.setBorder(null);
 		SummaryPanel.setLayout(null);
 		SummaryPanel.setBackground(new Color(240, 255, 255));
 		SummaryPanel.setBounds(270, 360, 554, 190);
@@ -429,6 +446,7 @@ public class MainWindow {
 		PanelSummary.setLayout(null);
 		
 		JPanel PanelSummaryTop = new JPanel();
+		PanelSummaryTop.setBackground(new Color(240, 255, 255));
 		PanelSummaryTop.setBounds(0, 0, 354, 85);
 		PanelSummary.add(PanelSummaryTop);
 		PanelSummaryTop.setLayout(null);
@@ -450,6 +468,7 @@ public class MainWindow {
 		PanelSummaryTop.add(Lbl_Send_Success_Indicator);
 		
 		JPanel PanelSummaryBot = new JPanel();
+		PanelSummaryBot.setBackground(new Color(240, 255, 255));
 		PanelSummaryBot.setBounds(0, 85, 354, 85);
 		PanelSummary.add(PanelSummaryBot);
 		PanelSummaryBot.setLayout(null);
@@ -690,7 +709,7 @@ public class MainWindow {
 				
 			}
 		});
-		Btn_Google_Search.setBackground(Color.LIGHT_GRAY);
+		Btn_Google_Search.setBackground(new Color(204, 204, 204));
 		Btn_Google_Search.setBounds(91, 110, 89, 23);
 		ScreenBrowsePanel.add(Btn_Google_Search);
 		

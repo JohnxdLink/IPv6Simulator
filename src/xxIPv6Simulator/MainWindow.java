@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class MainWindow {
 	/*s
@@ -26,6 +27,8 @@ public class MainWindow {
 	GetConfigurations NetworkConfigurations = new GetConfigurations();
 	GetIpv6Config Ipv6Process = new GetIpv6Config();
 	Ipv6Config Ipv6Configuration = new Ipv6Config();
+	
+	SearchEngine googleSearch = new SearchEngine();
 
 	private JFrame frmWelcomeIpv;
 	private JTextField TxtF_Wifi_Name;
@@ -40,12 +43,15 @@ public class MainWindow {
 	String defaultGateway;
 	String subnetMask;
 	String ipv4Address;
+	String ipv6Address;
 	String networkPrefix;
 	String macAddress;
 	
 	String phoneWifi;
 	String phoneIpv4Address;
 	String phoneIpv6Address;
+	
+	String search;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -204,7 +210,7 @@ public class MainWindow {
 		ScreenHomePanel.setLayout(null);
 		ScreenHomePanel.setBackground(Color.WHITE);
 		ScreenHomePanel.setVisible(false);
-		ScreenHomePanel.setBounds(300, 39, 190, 350);
+		ScreenHomePanel.setBounds(30, 39, 190, 350);
 		PhonePanel.add(ScreenHomePanel);
 		
 		JPanel ScreenBrowsePanel = new JPanel();
@@ -230,10 +236,6 @@ public class MainWindow {
 		TxtF_Google_Search.setColumns(10);
 		TxtF_Google_Search.setBounds(10, 76, 170, 25);
 		ScreenBrowsePanel.add(TxtF_Google_Search);
-		
-		JButton Btn_Google_Search = new JButton("Search");
-		Btn_Google_Search.setBounds(91, 110, 89, 23);
-		ScreenBrowsePanel.add(Btn_Google_Search);
 		
 		JPanel GoogleResultPanel = new JPanel();
 		GoogleResultPanel.setBackground(Color.WHITE);
@@ -280,21 +282,15 @@ public class MainWindow {
 		Lbl_Internet_Indicator.setBounds(70, 0, 138, 25);
 		InternetPanel.add(Lbl_Internet_Indicator);
 		
-		JPanel SettingPanel03_1 = new JPanel();
-		SettingPanel03_1.setLayout(null);
-		SettingPanel03_1.setBounds(10, 217, 230, 30);
-		InternetPanel.add(SettingPanel03_1);
+		JLabel Lbl_Preview_Image = new JLabel("");
+		Lbl_Preview_Image.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/default photo.png")));
+		Lbl_Preview_Image.setBounds(40, 251, 170, 170);
+		InternetPanel.add(Lbl_Preview_Image);
 		
-		JButton Btn_Setting_Connect_1 = new JButton("Send Feedback");
-		Btn_Setting_Connect_1.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 14));
-		Btn_Setting_Connect_1.setBackground(new Color(127, 255, 0));
-		Btn_Setting_Connect_1.setBounds(0, 0, 230, 30);
-		SettingPanel03_1.add(Btn_Setting_Connect_1);
-		
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(MainWindow.class.getResource("/xxIPv6Simulator/images/default photo.png")));
-		lblNewLabel_3.setBounds(40, 268, 170, 170);
-		InternetPanel.add(lblNewLabel_3);
+		JButton btnNewButton = new JButton("Proceed");
+		btnNewButton.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 14));
+		btnNewButton.setBounds(151, 440, 89, 23);
+		InternetPanel.add(btnNewButton);
 		
 		JPanel RouterPanel = new JPanel();
 		RouterPanel.setBorder(new LineBorder(Color.BLUE));
@@ -432,45 +428,47 @@ public class MainWindow {
 		Lbl_Process_Img.setBounds(10, 11, 170, 170);
 		SummaryPanel.add(Lbl_Process_Img);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(190, 11, 354, 170);
-		SummaryPanel.add(panel);
-		panel.setLayout(null);
+		JPanel PanelSummary = new JPanel();
+		PanelSummary.setBounds(190, 11, 354, 170);
+		SummaryPanel.add(PanelSummary);
+		PanelSummary.setLayout(null);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 0, 354, 85);
-		panel.add(panel_1);
-		panel_1.setLayout(null);
+		JPanel PanelSummaryTop = new JPanel();
+		PanelSummaryTop.setBounds(0, 0, 354, 85);
+		PanelSummary.add(PanelSummaryTop);
+		PanelSummaryTop.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Client Request");
-		lblNewLabel.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 18));
-		lblNewLabel.setBounds(10, 0, 138, 21);
-		panel_1.add(lblNewLabel);
+		JLabel Lbl_Client_Header = new JLabel("Client Request");
+		Lbl_Client_Header.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 18));
+		Lbl_Client_Header.setBounds(10, 0, 138, 21);
+		PanelSummaryTop.add(Lbl_Client_Header);
 		
-		JLabel lblNewLabel_2 = new JLabel("0000:0000:0000:0000");
-		lblNewLabel_2.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 12));
-		lblNewLabel_2.setBounds(10, 23, 334, 21);
-		panel_1.add(lblNewLabel_2);
+		JLabel Lbl_Get_Ipv6_Add = new JLabel("0000:0000:0000:0000");
+		Lbl_Get_Ipv6_Add.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 12));
+		Lbl_Get_Ipv6_Add.setBounds(10, 23, 334, 21);
+		PanelSummaryTop.add(Lbl_Get_Ipv6_Add);
 		
-		JLabel lblSendSuccessfully = new JLabel("SEND SUCCESSFULLY");
-		lblSendSuccessfully.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 20));
-		lblSendSuccessfully.setBounds(148, 53, 196, 21);
-		panel_1.add(lblSendSuccessfully);
+		JLabel Lbl_Send_Success_Indicator = new JLabel("NO REQUEST");
+		Lbl_Send_Success_Indicator.setHorizontalAlignment(SwingConstants.RIGHT);
+		Lbl_Send_Success_Indicator.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 20));
+		Lbl_Send_Success_Indicator.setBounds(10, 53, 334, 21);
+		PanelSummaryTop.add(Lbl_Send_Success_Indicator);
 		
-		JPanel panel_1_1 = new JPanel();
-		panel_1_1.setBounds(0, 85, 354, 85);
-		panel.add(panel_1_1);
-		panel_1_1.setLayout(null);
+		JPanel PanelSummaryBot = new JPanel();
+		PanelSummaryBot.setBounds(0, 85, 354, 85);
+		PanelSummary.add(PanelSummaryBot);
+		PanelSummaryBot.setLayout(null);
 		
-		JLabel lblInternetResponse = new JLabel("Internet Response");
-		lblInternetResponse.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 18));
-		lblInternetResponse.setBounds(10, 0, 164, 21);
-		panel_1_1.add(lblInternetResponse);
+		JLabel Lbl_Internet_Response = new JLabel("Internet Response");
+		Lbl_Internet_Response.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 18));
+		Lbl_Internet_Response.setBounds(10, 0, 164, 21);
+		PanelSummaryBot.add(Lbl_Internet_Response);
 		
-		JLabel lblRespondedSuccessfully = new JLabel("RESPONDED SUCCESSFULLY");
-		lblRespondedSuccessfully.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 20));
-		lblRespondedSuccessfully.setBounds(76, 53, 268, 21);
-		panel_1_1.add(lblRespondedSuccessfully);
+		JLabel Lbl_Responded_Indicator = new JLabel("RESPONDED SUCCESSFULLY");
+		Lbl_Responded_Indicator.setHorizontalAlignment(SwingConstants.RIGHT);
+		Lbl_Responded_Indicator.setFont(new Font("Franklin Gothic Medium", Font.BOLD, 20));
+		Lbl_Responded_Indicator.setBounds(10, 53, 334, 21);
+		PanelSummaryBot.add(Lbl_Responded_Indicator);
 		
 		/* JPanels & Buttons */
 		JPanel WifiBtnPanel = new JPanel();
@@ -627,6 +625,8 @@ public class MainWindow {
 					
 					phoneIpv6Address = Ipv6Configuration.getIpv6ConfigComplete(getNetworkPrefix, getMacAddress);
 					Lbl_Ipv6_Address_Connected.setText(phoneIpv6Address);
+					
+					ipv6Address = Lbl_Ipv6_Address_Connected.getText();
 				
 					
 				} else if(phoneWifi.isEmpty()) {
@@ -640,6 +640,55 @@ public class MainWindow {
 		Btn_Setting_Connect.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 14));
 		Btn_Setting_Connect.setBounds(0, 0, 190, 30);
 		SettingPanel03.add(Btn_Setting_Connect);
+		
+		// Google Search Button
+		JButton Btn_Google_Search = new JButton("Search");
+		Btn_Google_Search.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				search = TxtF_Google_Search.getText();
+				
+				if(!ipv6Address.isEmpty()) {
+					googleSearch.setSearchEngine(search);
+					googleSearch.setIpv6AddressFound(ipv6Address);
+					
+					Lbl_Get_Ipv6_Add.setText(googleSearch.getIpv6AddressFound());
+					
+					if(googleSearch.getSearchEngine().equalsIgnoreCase("Dog")) {
+						Lbl_Send_Success_Indicator.setText("SEARCHING DOG");
+						Lbl_Send_Success_Indicator.setForeground(new Color(0, 255, 0));
+						
+					} else if(googleSearch.getSearchEngine().equalsIgnoreCase("Cat")) {
+						Lbl_Send_Success_Indicator.setText("SEARCHING CAT");
+						Lbl_Send_Success_Indicator.setForeground(new Color(0, 255, 0));
+					} else {
+						Lbl_Send_Success_Indicator.setText("INPUT DOES NOT EXIST");
+						Lbl_Send_Success_Indicator.setForeground(new Color(255, 0, 0));
+					}
+				}
+				
+			}
+		});
+		Btn_Google_Search.setBackground(Color.LIGHT_GRAY);
+		Btn_Google_Search.setBounds(91, 110, 89, 23);
+		ScreenBrowsePanel.add(Btn_Google_Search);
+		
+		
+		// Internet Panel Send Feedback
+		JPanel SendFeedbackPanel = new JPanel();
+		SendFeedbackPanel.setLayout(null);
+		SendFeedbackPanel.setBounds(10, 217, 230, 30);
+		InternetPanel.add(SendFeedbackPanel);
+		
+		JButton Btn_Send_Feedback = new JButton("Send Feedback");
+		Btn_Send_Feedback.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Lbl_Preview_Image.setIcon(new ImageIcon(MainWindow.class.getResource(googleSearch.getSelectedImage())));
+			}
+		});
+		Btn_Send_Feedback.setFont(new Font("Franklin Gothic Medium", Font.PLAIN, 14));
+		Btn_Send_Feedback.setBackground(new Color(127, 255, 0));
+		Btn_Send_Feedback.setBounds(0, 0, 230, 30);
+		SendFeedbackPanel.add(Btn_Send_Feedback);
 		
 		/* End of JPanels & Buttons */
 	}
